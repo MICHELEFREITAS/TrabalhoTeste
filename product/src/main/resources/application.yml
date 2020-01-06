@@ -1,0 +1,37 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: product-service
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    basic:
+      enable: false
+    ignored: /**
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:mysql://mysql:3306/productdb?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+    username: root
+    password: root
+    platform: mysql
+    initialization-mode: always
+
+productqueue:
+  rabbitmq:
+    exchange: product.exchange
+    queue: product.queue
+    routingkey: product.routingkey
